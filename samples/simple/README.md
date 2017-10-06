@@ -1,8 +1,3 @@
-##Prerequisites
-* node.js is installed on your environment (see https://nodejs.org/en/download/)
-* express is installed on your environment
-    * npm install express
-
 ##Instructions
 1. Update target URL in source code
     * In tract-hosted-payment.js, line 25, update the URL to your TRACT environment accordingly
@@ -23,7 +18,7 @@
          }
         ```
 
-2. Run application from /HostedPaymentJS folder
+2. Run application from /payments.js folder
     * node app.js
     
 3. Retrieve a referrer token from the TRACT API
@@ -52,13 +47,13 @@
         
 
 4. Navigate to test page
-    * http://localhost:1111/form.html?t=d88f9360-e192-412e-8892-9f5adb24e844&a=true
+    * http://localhost:1111/samples/simple/form.html?t=d88f9360-e192-412e-8892-9f5adb24e844&a=true
 
 5. Fill out sample data.  
     * Use Visa Card 4111111111111111 with current or future expiration date
     * Hit Submit button
 
 6. Receive successful response URL with payment method refrence token in URL
-    * e.g. http://localhost:1111/success.html?r=c0294abb-4ca6-4b8b-99c9-3541e5654345
+    * e.g. http://localhost:1111/samples/simple/success.html?r=c0294abb-4ca6-4b8b-99c9-3541e5654345
     
 This received token can then be used to add this payment method to a billing account later in the flow.
