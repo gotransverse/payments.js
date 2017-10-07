@@ -22,7 +22,7 @@ function createPaymentToken(successFunction, errorFunction) {
    //make ajax call
    $.ajax({
     method: "POST",
-    url: "https://customer-solutions.gotransverse.com/t/s/p/1.0/hosted-payment/reference-cc-payment-method",
+    url: 'https://' + window.tpu + '/t/s/p/1.0/hosted-payment/reference-cc-payment-method',
     data: json,
     contentType: "application/json"
   }).done(successFunction)

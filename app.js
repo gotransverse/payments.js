@@ -1,8 +1,11 @@
-var express = require('express');
+#!/usr/bin/env node
 
-var CLIENT_PORT = 1111;
-var clientapp = express();
-clientapp.use(express.static(__dirname));
-clientapp.listen(CLIENT_PORT, function() {
-	console.log('Started client at http://localhost:' + CLIENT_PORT);
-});
+const chalk = require('chalk');
+
+console.log(chalk`
+{bold usage:}
+executing {underline npm run} will give you a list of samples you can try
+to run a specific sample just type 
+{underline npm run simple}
+where {underline simple} is the name of the sample
+`)

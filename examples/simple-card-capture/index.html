@@ -2,27 +2,31 @@
 <html lang="en">
 <head>
 	
+	<script type="text/javascript">
+		window.tpu = '__TRACT_PAYMENTS_URL__';
+	</script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="../../bootstrap/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="bootstrap/bootstrap.min.css"></link>
 
 	<!-- jQuery library -->
-	<script src="../../jquery/jquery-1.11.3.min.js"></script>
+	<script src="jquery/jquery-1.11.3.min.js"></script>
 
 	<!-- JQuery validator libraries -->
-	<script src="../../jquery/jquery.validate.min.js"></script>
+	<script src="jquery/jquery.validate.min.js"></script>
 
 	<script src="additional-methods.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
-	<script src="../../bootstrap/bootstrap.min.js"></script>
+	<script src="bootstrap/bootstrap.min.js"></script>
 
 	<!-- Form validation script -->
-	<script src="tract-payment-validate.js"></script>
+	<script src="tract-payments-validate.js"></script>
 
 	<!-- TRACT hosted payment script -->
-	<script src="tract-hosted-payment.js"></script>
+	<script src="tract-payments-lib.js"></script>
 
 	<script>
 
@@ -55,14 +59,7 @@
             $("#submit_btn").removeAttr("disabled");
 		}
 
-		$(document).ready(function(){ 
-
-			//trivial example of toggling the visibility of the address fields
-			var a = GetURLParameter('a');
-			if (!a) {
-				$("#address_container").hide();
-			}
-
+		$(document).ready(function(){
 			//define the submit behavior
 			$("#payment_form").submit(function() {
 
