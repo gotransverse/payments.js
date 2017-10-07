@@ -4,7 +4,7 @@
   "description": "sample application for creating payments with tract",
   "main": "app.js",
   "scripts": {
-    "simple": "./samples/simple/app.js"
+    "simple-card-capture": "./examples/simple-card-capture/app.js"
   },
   "repository": {
     "type": "git",

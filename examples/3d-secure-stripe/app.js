@@ -45,9 +45,8 @@ app.get('/', function (req, res) { res.send(index) });
 app.get('/index.html', function (req, res) { res.send(index) });
 
 app.use(express.static(__dirname));
-app.use('/bootstrap', express.static(__dirname + '/../../bootstrap'));
-app.use('/fonts', express.static(__dirname + '/../../fonts'));
-app.use('/jquery', express.static(__dirname + '/../../jquery'));
+app.use('/', express.static(__dirname + '/../../public'));
+
 
 
 app.listen(opts.port, function() {
