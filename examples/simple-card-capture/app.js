@@ -6,13 +6,14 @@ const express = require('express');
 
 let opts = {}
 if (fs.existsSync(__dirname+'/config.json')){
-	opts = require('./config.json')
-} else {
-	opts = require('nomnom')
+	opts = { ...require('./config.json')}
+}
+
+const argOptions = require('nomnom')
 	.options({
 		'tract-payments-url': {
 			position: 0,
-			required: true,
+			required: !opts['tract-payments-url'],
 			help: 'the tract payments url',
 		},
 		port: {
@@ -27,7 +28,9 @@ if (fs.existsSync(__dirname+'/config.json')){
 		}
 	})
 	.parse();
-}
+
+opts = {...opts, ...argOptions}	
+
 if (opts.save){
 	fs.writeFileSync(__dirname+'/config.json', JSON.stringify({
 		'tract-payments-url': opts['tract-payments-url'],
