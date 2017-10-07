@@ -19,39 +19,38 @@ service in an unauthenticated manner from a client browser.
 
 * A TRACT tenant
 
-    * goTransverse Customer Support will provide the domain name for your TRACT instance
+    * goTransverse Customer Support will provide the domain name for your TRACT instance, (e.g. demo.tractbilling.com for the purposes of these examples)
     * goTransverse Customer Support will provide an api account for you TRACT tenant.
     
     
 # Getting A Referrer Token
 
-Using a tool like Postman, do the following
+Using a tool like Postman, construct an HTTP post with the following information
 
-## URL
+```https://demo.tractbilling.com/t/s/r/1.28/payments/referrerToken```
 
-    POST https://<your-tract-domain>/t/s/r/1.28/payments/referrerToken
 
-##Request Headers
+## Request Headers
+
+```Authorization: Basic <auth>``` 
+
+```Content-Type: application/xml```
     
-### Authorization    
-    Authorization: Basic <auth> 
-    
-    Where <auth> is the base64 encoded <your-username>:<your-password>
+   Where `<auth>` is the base64 encoded <your-username>:<your-password>
 
-### Content-Type
     
-    Content-Type: application/xml
-    
-##Request Body
+## Request Body
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_28/domain">
+    <errorUrl>http://www.yahoo.com?error</errorUrl>
+    <cancelUrl>http://www.yahoo.com?cancel/</cancelUrl>
+    <completeUrl>http://www.yahoo.com?complete/</completeUrl>
+</generatePaymentCollectionReferrerToken>        
+```
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_28/domain">
-        <errorUrl>http://www.yahoo.com?error</errorUrl>
-        <cancelUrl>http://www.yahoo.com?cancel/</cancelUrl>
-        <completeUrl>http://www.yahoo.com?complete/</completeUrl>
-    </generatePaymentCollectionReferrerToken>        
-
-##Response Body
-        
-    <?xml version="1.0" encoding="UTF-8"?>
-    <referrer xmlns="http://www.tractbilling.com/billing/1_28/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
+## Response Body
+```        
+<?xml version="1.0" encoding="UTF-8"?>
+<referrer xmlns="http://www.tractbilling.com/billing/1_28/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
+```
