@@ -4,7 +4,9 @@ Payments Service backend to implement browser based payment flows to meet your b
 
 All flows require an initial authenticated call to TRACT via a secure mechanism to retrieve a 
 referrer token.  This referrer token is short lived and allows a developer to make calls against the TRACT Payment
-service in an unauthenticated manner from a client browser.
+service in a temporarily authenticated manner from a client browser.  This token can be used only
+once to create a temporary payment method in TRACT.  A payment token is provided for this temporary payment
+method which is then used to add a payment method to a billing account.
 
 # Prerequisites 
 * node.js is installed on your environment
