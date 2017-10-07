@@ -1,4 +1,4 @@
-#Instructions
+# Instructions
 
 1. Run application from /payments.js/examples/simple-card-capture folder with <your-tract-domain> as parameter
     * node app.js foo.tractbilling.com
