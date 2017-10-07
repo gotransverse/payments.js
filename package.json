@@ -1,0 +1,25 @@
+{
+  "name": "payments",
+  "version": "1.0.0",
+  "description": "sample application for creating payments with tract",
+  "main": "app.js",
+  "scripts": {
+    "simple": "./samples/simple/app.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotransverse/payments.js.git"
+  },
+  "author": "https://github.com/ptindall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gotransverse/payments.js/issues"
+  },
+  "homepage": "https://github.com/gotransverse/payments.js#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "express": "^4.16.1",
+    "nomnom": "^1.8.1"
+  }
+}
