@@ -1,7 +1,7 @@
 # Instructions
 
-1. Run application from /payments.js/examples/simple-card-capture folder with \<your-tract-domain\> as first parameter
-    * node app.js foo.tractbilling.com
+1. Navigate to /payments.js/examples/simple-card-capture folder 
+    * Run `node app.js foo.tractbilling.com`
     
 2. Retrieve a referrer token from the TRACT API (see top level README.md file)       
 
