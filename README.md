@@ -14,10 +14,10 @@ method which is then used to add a payment method to a billing account.
     * See https://nodejs.org/en/download/
     * Tested with node version 8.6.0 
 
-* Navigate to root /payments.js folder and do the following
+* Required node libraries are installed.
 
-    * npm install
-    * This will install all the requirements required to run the samples.
+    * Navigate to /payments.js
+    * Run `npm install`
 
 * A TRACT tenant
 
