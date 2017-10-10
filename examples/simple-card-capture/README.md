@@ -1,16 +1,16 @@
 # Instructions
 
-1. Run application from /payments.js/examples/simple-card-capture folder with <your-tract-domain> as parameter
+1. Run application from /payments.js/examples/simple-card-capture folder with \<your-tract-domain\> as first parameter
     * node app.js foo.tractbilling.com
     
-2. Retrieve a referrer token from the TRACT API        
+2. Retrieve a referrer token from the TRACT API (see top level README.md file)       
 
 3. Navigate to test page
     * http://localhost:1111/index.html?t=d88f9360-e192-412e-8892-9f5adb24e844
 
 4. Fill out sample data.  
     * Use Visa Card 4111111111111111 with current or future expiration date
-    * Enter any address information
+    * Enter address information
     * Hit Submit button
 
 5. Receive successful response URL with payment method refrence token in URL
