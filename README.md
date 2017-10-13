@@ -29,7 +29,7 @@ method which is then used to add a payment method to a billing account.
 
 Using a tool like Postman, construct an HTTP post with the following information
 
-```https://demo.tractbilling.com/t/s/r/1.28/payments/referrerToken```
+```https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
 
 
 ## Request Headers
@@ -44,7 +44,7 @@ Using a tool like Postman, construct an HTTP post with the following information
 ## Request Body
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_28/domain">
+<generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_33/domain">
     <errorUrl>http://www.yahoo.com?error</errorUrl>
     <cancelUrl>http://www.yahoo.com?cancel/</cancelUrl>
     <completeUrl>http://www.yahoo.com?complete/</completeUrl>
@@ -54,5 +54,5 @@ Using a tool like Postman, construct an HTTP post with the following information
 ## Response Body
 ```        
 <?xml version="1.0" encoding="UTF-8"?>
-<referrer xmlns="http://www.tractbilling.com/billing/1_28/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
+<referrer xmlns="http://www.tractbilling.com/billing/1_33/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
 ```
