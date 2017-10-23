@@ -3,7 +3,7 @@ The examples provided in this project are meant to illustrate how to utilize the
 Payments Service backend to implement browser based payment flows to meet your business needs.
 
 All flows require an initial authenticated call to TRACT via a secure mechanism to retrieve a 
-referrer token.  This referrer token is short lived and allows a developer to make calls against the TRACT Payment
+referrer token.  This referrer token is short-lived and allows a developer to make calls against the TRACT Payment
 service in a temporarily authenticated manner from a client browser.  This token can be used only
 once to create a temporary payment method in TRACT.  A payment token is provided for this temporary payment
 method which is then used to add a payment method to a billing account.
@@ -25,7 +25,7 @@ method which is then used to add a payment method to a billing account.
     * goTransverse Customer Support will provide an api account for you TRACT tenant.
     
     
-# Getting A Referrer Token
+# Getting a Referrer Token
 
 Using a tool like Postman, construct an HTTP post with the following information
 
