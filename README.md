@@ -27,12 +27,42 @@ method which is then used to add a payment method to a billing account.
     
 # Getting a Referrer Token
 
-Using a tool like Postman, construct an HTTP post with the following information
+Using a tool like Postman, construct an HTTP post using either JSON REST API or XML REST API.
 
-```https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
+## JSON REST API Example
+
+```POST https://demo.tractbilling.com/billing/2/payments/generate-token```
+
+### Request Headers
+
+```Authorization: No Auth``` 
+
+```X-api-key: Your provisioned API key```
+
+```Content-Type: application/json```
+
+### Request Body
+```
+{
+  "error_url": "https://gotransverse.com?error",
+  "cancel_url": "https://gotransverse.com?cancel",
+  "complete_url": "https://gotransverse.com?complete"
+}
+```
+
+### Response Body
+```
+{
+    "token": "9235d441-edf6-4a76-bcc3-48f2c3ab93cc"
+}
+```
+
+## XML REST API Example
+
+```POST https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
 
 
-## Request Headers
+### Request Headers
 
 ```Authorization: Basic <auth>``` 
 
@@ -41,7 +71,7 @@ Using a tool like Postman, construct an HTTP post with the following information
    Where `<auth>` is the base64 encoded <your-username>:<your-password>
 
     
-## Request Body
+### Request Body
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_33/domain">
@@ -51,7 +81,7 @@ Using a tool like Postman, construct an HTTP post with the following information
 </generatePaymentCollectionReferrerToken>        
 ```
 
-## Response Body
+### Response Body
 ```        
 <?xml version="1.0" encoding="UTF-8"?>
 <referrer xmlns="http://www.tractbilling.com/billing/1_33/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
