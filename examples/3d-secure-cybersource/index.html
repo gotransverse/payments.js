@@ -52,7 +52,7 @@
                                 var encodedPMRef = encodeURIComponent(resp.reference);
                                 var encodedACSURL = encodeURIComponent(resp.url_3d_secure);
                                 var encodedPAREQ = encodeURIComponent(resp.pa_request_3d_secure);
-				var tract_validate_token_url = 'http://' + window.tpu + '/tract/s/p/1.0/hosted-payment/reference-cc-payment-method/3d_secure_validate';
+				var tract_validate_token_url = 'https://' + window.tpu + '/t/s/p/1.0/hosted-payment/reference-cc-payment-method/3d_secure_validate';
 				var encodedCallbackUrl = encodeURIComponent(tract_validate_token_url);
 				window.location="acsPage.html?pmRef=" + encodedPMRef + "&acsURL=" + encodedACSURL + "&paReq=" + encodedPAREQ + "&callbackUrl=" + encodedCallbackUrl;
 			}
