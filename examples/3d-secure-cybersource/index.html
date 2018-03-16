@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<script type="text/javascript">
+		window.tpu = '__TRACT_PAYMENTS_URL__';
+	</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap/bootstrap.min.css"></link>
+
+	<!-- jQuery library -->
+	<script src="jquery/jquery-1.11.3.min.js"></script>
+
+	<!-- JQuery validator libraries -->
+	<script src="jquery/jquery.validate.min.js"></script>
+
+	<script src="additional-methods.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="bootstrap/bootstrap.min.js"></script>
+
+	<!-- Form validation script -->
+	<script src="tract-payments-validate.js"></script>
+
+	<!-- TRACT hosted payment script -->
+	<script src="tract-payments-lib.js"></script>
+
+	<script>
+
+		function GetURLParameter(sParam) {
+
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+
+			for (var i = 0; i < sURLVariables.length; i++) {
+				var sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] == sParam)
+
+				{
+					return sParameterName[1];
+				}
+			}
+		}
+
+		//this callback will be called if the token is successfully submitted
+		function createPaymentTokenSucceeded(resp) {
+			if (resp.validation_status == "VALIDATION_REQUIRES_3D_SECURE") {
+                                alert(resp.reference);
+                                var encodedPMRef = encodeURIComponent(resp.reference);
+                                var encodedACSURL = encodeURIComponent(resp.url_3d_secure);
+                                var encodedPAREQ = encodeURIComponent(resp.pa_request_3d_secure);
+				var tract_validate_token_url = 'http://' + window.tpu + '/tract/s/p/1.0/hosted-payment/reference-cc-payment-method/3d_secure_validate';
+				var encodedCallbackUrl = encodeURIComponent(tract_validate_token_url);
+				window.location="acsPage.html?pmRef=" + encodedPMRef + "&acsURL=" + encodedACSURL + "&paReq=" + encodedPAREQ + "&callbackUrl=" + encodedCallbackUrl;
+			}
+			else if (resp.validation_status == "VALIDATION_SUCCEEDED") {
+                                alert(resp.reference);
+				window.location="success.html?pmRef=" + resp.reference;
+			}
+			else if (resp.validation_status == "VALIDATION_NOT_REQUESTED") {
+                                alert(resp.reference);
+				window.location="success.html?pmRef=" + resp.reference;
+			}
+			else {
+				alert("Failure: " + resp.code + " " + resp.message);
+				// re-enable the submit button
+	            $("#submit_btn").removeAttr("disabled");
+			}
+		}
+
+		//this callback will be called if the token request fails
+		function createPaymentTokenFailed(req, status, err) {
+			var response = $.parseJSON(req.responseText);
+			alert("Failure: " + response.exception);
+			// re-enable the submit button
+            $("#submit_btn").removeAttr("disabled");
+		}
+
+		$(document).ready(function(){
+			//define the submit behavior
+			$("#payment_form").submit(function() {
+
+        		//disable submit button so we don't get a possible double submit
+				$("#submit_btn").prop('disabled', true);
+
+
+				if ($("#payment_form").valid()) {
+					
+					createPaymentToken(createPaymentTokenSucceeded, createPaymentTokenFailed);
+				} else {
+					//validation error messages should be displayed by the validator plugin
+					//re-enable the submit button
+            		$("#submit_btn").removeAttr("disabled");
+				}
+
+				//prevent form submission
+				//everything has already been done we don't want to submit
+				return false;
+			});
+
+			//add the reference token to the form
+			var token = GetURLParameter('t');
+			$('#payment_form').append('<input type="hidden" name="token" id="token" value="'+ token +'" />');
+
+			var billingAccountId = GetURLParameter('b');
+			$('#payment_form').append('<input type="hidden" name="account_eid" id="account_eid" value="'+ billingAccountId +'" />');
+
+			var fraudDetectionId = GetURLParameter('f');
+			$('#payment_form').append('<input type="hidden" name="fraud_detection_id" id="fraud_detection_id" value="' + fraudDetectionId +'" />');
+
+			
+		});
+
+</script>
+</head>
+
+<body>
+
+	<div class="container">
+		<h3>Enter Credit Card Information</h3>
+		<hr class="divider"/>
+		<form id="payment_form">
+			<div class="row">
+				<div class="col-xs-2">
+					<label for="first_name">First</label>
+					<input class="form-control" id="first_name" name="first_name" type="text"/>
+				</div>
+				<div class="col-xs-1">
+					<label for="middle_name">Middle</label>
+					<input class="form-control" id="middle_name" name="middle_name" type="text"/>
+				</div>
+				<div class="col-xs-2">
+					<label for="last_name">Last</label>
+					<input class="form-control" id="last_name" name="last_name" type="text"/>
+				</div>
+				<div class="col-xs-1">
+					<label for="suffix">Suffix</label>
+					<input class="form-control" id="suffix" name="suffix" type="text"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-1">
+					<label for="card_type">Type</label>
+					<select class="form-control" id="card_type" name="card_type">
+					<option>Visa</option>
+						<option>Mastercard</option>
+						<option>American Express</option>
+						<option>Discover</option>
+					</select>
+				</div>
+				<div class="col-xs-3">
+					<label for="card_number">Number</label>
+					<input class="form-control" id="card_number" name="card_number" type="text"/>
+				</div>
+				<div class="col-xs-1">
+					<label for="cvv">CVV</label>
+					<input class="form-control" id="cvv" name="cvv" type="text"/>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<label for="date">Date</label>
+					<input class="form-control" id="date" name="expire_date" type="text" placeholder="MM/YYYY" maxlength="7" size="7"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="email">Email</label>
+					<input class="form-control" id="email" name="email_address" type="email"/>
+				</div>
+			</div>
+
+			<br/>
+
+			<div id="address_container">
+			<h4>Enter Address Info</h4>
+			<hr class="divider"/>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="address_1">Address</label>
+					<input class="form-control" id="address_1" name="address_1" type="text"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="address_2"></label>
+					<input class="form-control" id="address_2" name="address_2" type="text"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<label for="city">City</label>
+					<input class="form-control" id="city" name="city" type="text"/>
+				</div>
+				<div class="col-xs-1">
+					<label for="state">State</label>
+					<input class="form-control" id="state" name="state" type="text" maxlength="2"  minlength="2" placeholder="TX"/>
+					<input type="hidden" name="country" id="country" value="USA" />
+				</div>
+				<div class="col-xs-1">
+					<label for="postal_code">Zip</label>
+					<input class="form-control" id="postal_code" name="postal_code" type="text"/>
+				</div>
+			</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-xs-offset-5 col-xs-7">
+					<button type="submit" class="btn btn-primary" name="submit_btn" id="submit_btn">Submit</button>
+				</div>
+			</div>
+		</form>
+		<hr class="divider"/>
+	</div>
+</body>
+
+</html>

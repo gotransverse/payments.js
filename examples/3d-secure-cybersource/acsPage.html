@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<body>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="bootstrap.min.css"></link>
+	
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="bootstrap/bootstrap.min.css"></link>
+
+		<!-- jQuery library -->
+		<script src="jquery/jquery-1.11.3.min.js"></script>
+
+		<!-- JQuery validator libraries -->
+		<script src="jquery/jquery.validate.min.js"></script>
+	
+		<script src="additional-methods.min.js"></script>
+	
+		<!-- Latest compiled JavaScript -->
+		<script src="bootstrap/bootstrap.min.js"></script>
+		
+		<!-- Get URL parameter script -->
+    	<script src="getURLParameters.js"></script>
+    	
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+			
+				// add acs url to the form
+				var acsURL = GetURLParameter('acsURL');
+				var decodedACSURL = decodeURIComponent(acsURL);
+				$('#PAEnrollForm').attr('action', decodedACSURL);
+				
+				// set the PaReq value
+				var paReq = GetURLParameter('paReq');
+				var decodedPAREQ = decodeURIComponent(paReq);
+				$('#PAEnrollForm').append('<input type="hidden" name="PaReq" value="'+ decodedPAREQ +'" />');
+				
+				// set the callback URL
+				var callbackUrl = GetURLParameter('callbackUrl');
+				var decodedCallbackUrl = decodeURIComponent(callbackUrl);
+				$('#PAEnrollForm').append('<input type="hidden" name="TermUrl" value="'+ decodedCallbackUrl +'" />');
+				
+				// set the MD (XID) value, this is the payment method reference to be returned on the callback
+				var md = GetURLParameter('pmRef');
+				var decodedPMREF = decodeURIComponent(md);
+				$('#PAEnrollForm').append('<input type="hidden" name="MD" value="'+ decodedPMREF +'" />');
+				
+				// submit the form
+			    $('#PAEnrollForm').submit();
+			    
+		    });
+		</script>
+		
+		<form id="PAEnrollForm" method="post">
+		</form>
+
+	</body>
+
+</html>
