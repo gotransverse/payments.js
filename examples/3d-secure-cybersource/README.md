@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequisites ----
 
 Your associated TRACT tenant must be configured with a Cybersource payment gateway with an account
 that has 3D secure processing enabled.
@@ -18,4 +18,4 @@ that has 3D secure processing enabled.
     * Enter any address information
     * Hit Submit button
 
-Remaining TBD
+Remaining TBD --
