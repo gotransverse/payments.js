@@ -22,7 +22,7 @@ function createPaymentToken(successFunction, errorFunction) {
    //make ajax call
    $.ajax({
     method: "POST",
-    url: 'http://' + window.tpu + '/t/s/p/1.0/hosted-payment/reference-cc-payment-method?perform_validate_auth=true',
+    url: 'https://' + window.tpu + '/t/s/p/1.0/hosted-payment/reference-cc-payment-method?perform_validate_auth=true',
     data: json,
     contentType: "application/json"
   }).done(successFunction)
