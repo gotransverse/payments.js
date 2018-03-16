@@ -49,7 +49,6 @@
 		//this callback will be called if the token is successfully submitted
 		function createPaymentTokenSucceeded(resp) {
 			if (resp.validation_status == "VALIDATION_REQUIRES_3D_SECURE") {
-                                alert(resp.reference);
                                 var encodedPMRef = encodeURIComponent(resp.reference);
                                 var encodedACSURL = encodeURIComponent(resp.url_3d_secure);
                                 var encodedPAREQ = encodeURIComponent(resp.pa_request_3d_secure);
