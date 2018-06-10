@@ -1,0 +1,20 @@
+{
+  "name": "tract-stripe-3dsecure-sample",
+  "version": "0.0.1",
+  "description": "Tract Stripe 3D Secure Sample",
+  "author": "Transverse",
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "npm": "^6.1.0",
+    "nomnom": "^1.8.1",
+    "chalk": "^2.1.0"
+  }
+}

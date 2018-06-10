@@ -1,0 +1,52 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="three-d-stripe-example.css">
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+  <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.9/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="three-d-stripe-example.js" defer></script>
+</head>
+
+<body>
+  <form action="__TRACT_PAYMENTS_URL__" method="post"> 
+    <label>
+      <span>First Name</span>
+      <input name="cardholder-last-name" class="field" placeholder="Jane" />
+    </label>
+    <label>
+      <span>Last Name</span>
+      <input name="cardholder-first-name" class="field" placeholder="Doe" />
+    </label>
+    <label>
+      <span>Address 1</span>
+      <input name="cardholder-address1" class="field" placeholder="123 Main St." type="text" />
+    </label>
+    <label>
+      <span>Address 2</span>
+      <input name="cardholder-address2" class="field" placeholder="Suite 500" type="text" />
+    </label>
+    <label>
+      <span>Email</span>
+      <input name="cardholder-email" class="field" placeholder="test@test.com" type="email"/>
+    </label>
+    <label>
+      <span>ZIP code</span>
+      <input name="cardholder-postal" class="field" placeholder="94110" />
+    </label>
+    <label>
+      <span>Card</span>
+      <div id="card-element" class="field"></div>
+    </label>
+    <button name="card-submit" type="submit">Submit Card</button>
+    <div class="outcome">
+      <div class="error"></div>
+      <div class="success">
+        Success! Your Stripe token is <span class="token"></span>
+      </div>
+      <div class="three-d-result">
+        Three D Secure status <span class="tds"></span>
+      </div>  
+    </div>
+  </form>
+</body>
+</html>
