@@ -24,21 +24,21 @@ must be configured in the Stripe dashboard.
 
 6. Add the new reference credit card payment method
 
-	<addRecurringPaymentToBillingAccount>
-          <billingAccount eid="302"/>
-          <recurringPayment>
-            <referencedCreditCardPaymentMethod referenceKey="4c4f357d-e8f8-4eff-a78d-96959cfc8300"/>
-          </recurringPayment>
-    </addRecurringPaymentToBillingAccount>
+			<addRecurringPaymentToBillingAccount>
+          		<billingAccount eid="302"/>
+          		<recurringPayment>
+            		<referencedCreditCardPaymentMethod referenceKey="4c4f357d-e8f8-4eff-a78d-96959cfc8300"/>
+          		</recurringPayment>
+    		</addRecurringPaymentToBillingAccount>
 
 7. Initiate a 3D Secure payment with the following API call, specifying the URL the user should return to after completing the 3D process.
 
-      <createThreeDPayment>
-        <threeDPayment returnUrl="http://google.com" applyAutomatically="true" amount="12.00" >
-			<billingAccount eid="302"/>
-			<tokenizedCreditCardPaymentMethod eid="1719"/>
-		</threeDPayment>
-      </createThreeDPayment>
+      		<createThreeDPayment>
+        		<threeDPayment returnUrl="http://google.com" applyAutomatically="true" amount="12.00" >
+					<billingAccount eid="302"/>
+					<tokenizedCreditCardPaymentMethod eid="1719"/>
+				</threeDPayment>
+      		</createThreeDPayment>
 
 8. A redirectURL will be returned. This URL should be displayed to the user so they can complete the 3D Secure transaction. The payment will be in a status of EXTERNAL REVIEW till the 3D flow is completed or expires.
 
