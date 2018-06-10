@@ -4,7 +4,7 @@ Your associated TRACT tenant must be configured with a Stripe payment gateway wi
 that has 3D secure processing enabled. Credit card tokenization must be turned on. A webhook
 must be configured in the Stripe dashboard.
 
-#Instructions
+# Instructions
 
 1. Run application from /payments.js/examples/3d-secure-stripe folder with TRACT's Stripe Submit endpoint as the parameter.
    Alternatively, a environment variable named TRACT_URL can be set with this value.
@@ -53,4 +53,22 @@ must be configured in the Stripe dashboard.
 
 9. Shortly after approving the 3D Secure flow, if the webhook is configured correctly, TRACT will receive and event indicating that 3D Secure Transaction was approved. TRACT will then call Stripe to charge the card and the payment will transition to COMPLETED. If the 3D Secure transaction is declined or times out (six hour time limit), then TRACT will receive an event indicating a failure and the payment will transition to PROCESSING_ERROR.
 
+# The Webhook
 
+To configure the webhook in Stripe, please follow the instructions below.
+
+1. Log in to the Stripe dashboard for the Stripe account you are using.
+
+2. In the left side menu, click on the "Webhook" link under "Developers".
+
+3. Click the "Add Endpoint" buttong on the top right of the list of Endpoints.
+
+4. Enter in the URL the webhook events should be sent. The example below is for the goTransverse QA environment. Your tenant id is required.
+
+     https://tract-qa2.gotransverse.com/t/s/i/1.0/stripeEvent/sourceChargable?tenant=5
+
+6. From the "Filter Events" radio buttons, select the option "select types to send".
+
+7. Enable the following three events by checking them on the list of filter events: source.chargeable, source.canceled, source.failed
+
+8. Click the Add Endpoint button. 
