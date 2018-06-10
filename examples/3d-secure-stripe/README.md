@@ -6,7 +6,8 @@ must be configured in the Stripe dashboard.
 
 #Instructions
 
-1. Run application from /payments.js/examples/3d-secure-stripe folder with TRACT's Stripe Submit endpoint as the parameter
+1. Run application from /payments.js/examples/3d-secure-stripe folder with TRACT's Stripe Submit endpoint as the parameter.
+   Alternatively, a environment variable named TRACT_URL can be set with this value.
     * node app.js https://tract-qa2.gotransverse.com/t/s/p/1.0/hosted-payment/submitStripeSource
     
 2. Retrieve a referrer token from the TRACT API        
@@ -53,5 +54,3 @@ must be configured in the Stripe dashboard.
 9. Shortly after approving the 3D Secure flow, if the webhook is configured correctly, TRACT will receive and event indicating that 3D Secure Transaction was approved. TRACT will then call Stripe to charge the card and the payment will transition to COMPLETED. If the 3D Secure transaction is declined or times out (six hour time limit), then TRACT will receive an event indicating a failure and the payment will transition to PROCESSING_ERROR.
 
 
-
-</soap:Envelope>
