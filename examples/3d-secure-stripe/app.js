@@ -24,6 +24,8 @@ const argOptions = require('nomnom')
     })
     .parse();
 
+opts = {...opts, ...argOptions} 
+
 var url;
 if (process.env.TRACT_URL) {
     url = process.env.TRACT_URL;
@@ -31,13 +33,13 @@ if (process.env.TRACT_URL) {
     url = opts['tract-payments-url'];
 }
 
-opts = {...opts, ...argOptions} 
+
 
 const app = express();
 
 const index = fs
     .readFileSync(path.join(__dirname, '.', '/index.html'), 'utf-8')
-    .replace(/__TRACT_PAYMENTS_URL__/g, process.env.TRACT_URL);
+    .replace(/__TRACT_PAYMENTS_URL__/g, url);
 
 app.get('/', function (req, res) { res.send(index) });
 app.get('/index.html', function (req, res) { res.send(index) });
