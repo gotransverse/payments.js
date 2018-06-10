@@ -24,7 +24,7 @@ must be configured in the Stripe dashboard.
 
 6. Add the new reference credit card payment method
 
-	<addRecurringPaymentToBillingAccount xmlns="http://www.tractbilling.com/billing/1_32/domain" xmlns:ns2="http://www.tractbilling.com/billing/1_32/domain/rest">
+	<addRecurringPaymentToBillingAccount>
           <billingAccount eid="302"/>
           <recurringPayment>
             <referencedCreditCardPaymentMethod referenceKey="4c4f357d-e8f8-4eff-a78d-96959cfc8300"/>
@@ -33,8 +33,8 @@ must be configured in the Stripe dashboard.
 
 7. Initiate a 3D Secure payment with the following API call, specifying the URL the user should return to after completing the 3D process.
 
-      <createThreeDPayment xmlns="http://www.tractbilling.com/billing/1_33/domain" xmlns:ns2="http://www.tractbilling.com/billing/1_33/domain/rest">
-        <threeDPayment returnUrl="http://google.com" applyAutomatically="true" amount="12.00" xmlns="http://www.tractbilling.com/billing/1_33/domain" xmlns:ns2="http://www.tractbilling.com/billing/1_33/domain/rest" xmlns:ns3="http://www.tractbilling.com/billing/1_33/domain">
+      <createThreeDPayment>
+        <threeDPayment returnUrl="http://google.com" applyAutomatically="true" amount="12.00" >
 			<billingAccount eid="302"/>
 			<tokenizedCreditCardPaymentMethod eid="1719"/>
 		</threeDPayment>
