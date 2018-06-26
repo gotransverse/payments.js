@@ -26,7 +26,7 @@ must be configured in the Stripe dashboard.
 
 			POST https://tract-qa2.gotransverse.com/t/s/r/1.33/billingAccounts/302/addRecurringPayment
 
-			<addRecurringPaymentToBillingAccount>
+			 <addRecurringPaymentToBillingAccount xmlns="http://www.tractbilling.com/billing/1_33/domain/rest">
           		<billingAccount eid="302"/>
           		<recurringPayment>
             		<referencedCreditCardPaymentMethod referenceKey="4c4f357d-e8f8-4eff-a78d-96959cfc8300"/>
@@ -42,23 +42,23 @@ the tokenizedCreditCardPaymentMethod element and not of the recurringPayment ele
 
 			POST https://tract-qa2.gotransverse.com/t/s/r/1.33/billingAccounts/302/createThreeDPayment
 
-      		<createThreeDPayment>
+      		<createThreeDPayment xmlns="http://www.tractbilling.com/billing/1_33/domain/rest">
         		<threeDPayment returnUrl="http://google.com" applyAutomatically="true" amount="12.00" >
-					<billingAccount eid="302"/>
-					<tokenizedCreditCardPaymentMethod eid="1719"/>
-				</threeDPayment>
+					   <billingAccount eid="302"/>
+					   <tokenizedCreditCardPaymentMethod eid="1719"/>
+				    </threeDPayment>
       		</createThreeDPayment>
 
 9. A redirectURL will be returned. This URL should be displayed to the user so they can complete the 3D Secure transaction. The transaction can be completed by selecting to either authorize or decline the transaction on the page displayed to the user. The payment will be in a status of EXTERNAL REVIEW till the 3D flow is completed or expires.
 
 			
-          	<createThreeDPaymentResponse>
+          	<createThreeDPaymentCommandResponse xmlns="http://www.tractbilling.com/billing/1_33/domain/rest">
                <threeDPayment redirectUrl="https://hooks.stripe.com/redirect/authenticate/src_1Cba7sAy0nzSWXrAJs0X0pyG?client_secret=src_client_secret_D1dOB7Sbfx2JU6IQ5xQlUqz3" returnUrl="http://google.com" refundedAmount="0.00" canceledAmount="0.00" amount="12.00" reference="src_1Cba7sAy0nzSWXrAJs0X0pyG" occurredOn="2018-06-10T15:27:00.387-05:00" useRecurringPayment="true" status="EXTERNAL_REVIEW" unappliedAmount="12.00" eid="2063" queryScope="SHALLOW">
                   <billingAccount eid="302" queryScope="EID"/>
-                  <tokenizedCreditCardPaymentMethod eid="1722" queryScope="EID"/>
+                  <tokenizedCreditCardPaymentMethod eid="1719" queryScope="EID"/>
                   <refunds pageNumber="1" pageSize="0" totalElements="0" elementCount="0" totalPages="1"/>
                </threeDPayment>
-            </createThreeDPaymentResponse>
+            </createThreeDPaymentCommandResponse>
 
 10. Shortly after approving the 3D Secure flow, if the webhook is configured correctly, TRACT will receive an event indicating that 3D Secure Transaction was approved. TRACT will then call Stripe to charge the card and the payment will transition to COMPLETED. If the 3D Secure transaction is declined or times out (one hour time limit), then TRACT will receive an event indicating a failure and the payment will transition to PROCESSING_ERROR.
 
