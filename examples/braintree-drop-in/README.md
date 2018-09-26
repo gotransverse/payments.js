@@ -11,12 +11,13 @@ Your associated TRACT tenant must be configured with a Braintree payment gateway
 2. Retrieve a referrer token from the TRACT API        
 
 POST https://tract-qa2.gotransverse.com/billing/2/payments/generate-token
-
+```javascript
 {
   "error_url": "http://yahoo.com",
   "cancel_url": "http://cnn.com",
   "complete_url": "http://google.com"
 }
+```
 
 3. Navigate to test page, passing in the referrer token with the "t" URL parameter
     * http://localhost:1111/index.html?t=d88f9360-e192-412e-8892-9f5adb24e844
@@ -32,15 +33,18 @@ POST https://tract-qa2.gotransverse.com/billing/2/payments/generate-token
 
 POST https://tract-qa2.gotransverse.com/billing/2/billing-accounts/302/recurring-payments
 
+```javascript
 {
   "payment_method": {
     "payment_method_type": "referenced",
     "reference_key":"6ce1b31c-e119-4c8f-b341-6e68aca347ae"
   }
 }
+```
 
 7. The response will be like the below. Your payment method is now ready.
 
+```javascript
 {
     "id": "471",
     "payment_method": {
@@ -59,5 +63,5 @@ POST https://tract-qa2.gotransverse.com/billing/2/billing-accounts/302/recurring
     "valid_from": "2018-09-26T12:29:48-05:00",
     "auto_payment": true
 }
-
+```
 
