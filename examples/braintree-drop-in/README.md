@@ -7,7 +7,7 @@ Your associated TRACT tenant must be configured with a Braintree payment gateway
 1. Run application from /payments.js/examples/braintree-drop-in folder.
    Two parameters are required. The endpoint URL to submit the braintree nonce to TRACT and a Braintree 'tokenization key' (see https://developers.braintreepayments.com/guides/authorization/tokenization-key/javascript/v2#obtaining-a-tokenization-key).
    Alternatively, a environment variable named TRACT_URL can be set with the endpoint url.
-    * node app.js https://tract-qa2.gotransverse.com/t/s/p/1.0/hosted-payment/submitBraintreeNonce sandbox_z6yy72km_jsk5pdrh123k1jh2
+    node app.js https://tract-qa2.gotransverse.com/t/s/p/1.0/hosted-payment/submitBraintreeNonce sandbox_z6yy72km_jsk5pdrh123k1jh2
     
 2. Retrieve a referrer token from the TRACT API        
 
