@@ -30,6 +30,7 @@
 
         <input type="hidden" id="nonce" name="payment_method_nonce" />
         <input type="hidden" id="referral" name="tract_referral" />
+        <input type="hidden" id="type" name="payment_method_type"/>
 
         <button class="button" type="submit"><span>Test Transaction</span></button>
       </form>
@@ -60,6 +61,7 @@
 
         // Add the nonce and payment method type to the form and submit
         document.querySelector('#nonce').value = payload.nonce;
+        document.querySelector('#referral').value = getURLParameter('t');
         document.querySelector('#referral').value = getURLParameter('t');
         
           form.submit();
