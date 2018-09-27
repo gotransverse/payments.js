@@ -61,7 +61,7 @@
 
         // Add the nonce and payment method type to the form and submit
         document.querySelector('#nonce').value = payload.nonce;
-        document.querySelector('#referral').value = getURLParameter('t');
+        document.querySelector('#type').value = payload.type;
         document.querySelector('#referral').value = getURLParameter('t');
         
           form.submit();
