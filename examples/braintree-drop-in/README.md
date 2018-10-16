@@ -13,7 +13,7 @@ node app.js https://tract-qa2.gotransverse.com/t/s/p/1.0/hosted-payment/submitBr
 
 2. Retrieve a referrer token from the TRACT API        
 
-POST https://tract-qa2.gotransverse.com/billing/2/payments/generate-token
+POST https://qa-public-api.gotransverse.com/billing/2/payments/generate-token
 ```javascript
 {
   "error_url": "http://yahoo.com",
