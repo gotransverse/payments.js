@@ -46,6 +46,9 @@
     braintree.dropin.create({
       authorization: client_token,
       container: '#bt-dropin',
+      card: {
+      //cardholderName: true
+    },
       paypal: {
         flow: 'vault'
       }
