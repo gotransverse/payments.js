@@ -34,7 +34,7 @@ POST https://qa-public-api.gotransverse.com/billing/2/payments/generate-token
 
 6. Add the new referenced payment method
 
-POST https://tract-qa2.gotransverse.com/billing/2/billing-accounts/302/recurring-payments
+POST https://qa-public-api.gotransverse.com/billing/2/billing-accounts/302/recurring-payments
 
 ```javascript
 {
@@ -53,9 +53,11 @@ POST https://tract-qa2.gotransverse.com/billing/2/billing-accounts/302/recurring
     "payment_method": {
         "payment_method_type": "tokenized-paypal",
         "id": "2068",
+        "nickname": "PayPal B-ZVKJDASD13123AS"
         "token": "244117836",
         "custom_field_values": [],
         "multi_factor_auth": false,
+        "pre_approval_key": "B-ZVKJDASD13123AS"
         "token_two": "cwbmxc"
     },
     "billing_account": {
