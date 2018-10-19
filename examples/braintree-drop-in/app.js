@@ -12,12 +12,12 @@ if (fs.existsSync(__dirname+'/config.json')){
 const argOptions = require('nomnom')
     .options({
         'tract-payments-url': {
-            position: 0,
+            position: 1,
             required: !process.env.TRACT_URL,
             help: 'the tract payments url, required if there is no TRACT_URL environment variable',
         },
         'braintree-token':{
-            position: 1,
+            position: 0,
             required: true,
             help: 'the braintree sandbox token is required'
         },
