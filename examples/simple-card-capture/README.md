@@ -11,7 +11,7 @@
 4. Fill out sample data.  
     * Use Visa Card 4111111111111111 with current or future expiration date
     * Enter address information
-    * Hit Submit button (this posts to the /reference-cc-payment-method endpoint on TRACT)
+    * Hit Submit button (this posts to the /t/s/p/1.0/hosted-payment/reference-cc-payment-method endpoint on TRACT)
 
 5. Receive successful response URL with payment method refrence token in URL
     * e.g. http://localhost:1111/success.html?r=c0294abb-4ca6-4b8b-99c9-3541e5654345
