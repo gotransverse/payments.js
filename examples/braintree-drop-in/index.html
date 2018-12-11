@@ -31,6 +31,7 @@
         <input type="hidden" id="nonce" name="payment_method_nonce" />
         <input type="hidden" id="referral" name="tract_referral" />
         <input type="hidden" id="type" name="payment_method_type"/>
+        <input type="hidden" id="device" name="device_data"/>
 
         <button class="button" type="submit"><span>Test Transaction</span></button>
       </form>
@@ -45,6 +46,10 @@
 
     braintree.dropin.create({
       authorization: client_token,
+      dataCollector: {
+        kount: true, // Required if Kount fraud data collection is enabled
+        paypal: true //Required to use Kount with paypal
+      },
       container: '#bt-dropin',
       card: {
       cardholderName: true
@@ -66,7 +71,7 @@
         document.querySelector('#nonce').value = payload.nonce;
         document.querySelector('#type').value = payload.type;
         document.querySelector('#referral').value = getURLParameter('t');
-        
+        document.querySelector('#device').value = payload.deviceData;
           form.submit();
         });
       });
